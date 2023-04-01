@@ -1,0 +1,14 @@
+using System;
+using MhmResult;
+
+public class Program
+{
+    private static void Main(string[] args)
+    {
+        var result = Result.Ok(7);
+        
+        if (result.IsFail){
+            var other = result.Value;
+        }
+    }
+}

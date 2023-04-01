@@ -1,0 +1,19 @@
+using System;
+using MhmResult;
+
+public class Program
+{
+    private static void Main(string[] args)
+    {
+
+        var myClass = Result.Ok(7);
+        var other = new Other();
+        Console.WriteLine([|myClass.Value|]);
+        Console.WriteLine(other.Value);
+    }
+}
+
+public class Other
+{
+    public string Value { get; set; }
+}

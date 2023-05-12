@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
@@ -18,7 +21,9 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Install dependencies
-      run: dotnet restore
+      run: |
+        cd src
+        dotnet restore
       
     - name: Build
       run: |
@@ -29,4 +34,11 @@ jobs:
     - name: Test
       run: |
         cd src
-        dotnet test --no-restore --verbosity normal
+        dotnet test --no-restore
+
+    - name: Upload nuget package
+      uses: actions/upload-artifact@v3
+      with:
+        name: nupkg
+        path: |
+          src/MhmResult.Package/bin/Release/*.nupkg

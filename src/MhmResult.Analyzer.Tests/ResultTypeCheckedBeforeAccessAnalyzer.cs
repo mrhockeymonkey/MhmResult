@@ -46,7 +46,7 @@ namespace MhmResult.Analyzer.Tests
         [TestMethod]
         public async Task Given_ValueAccessedBeforeIsOKCheck_Then_ReturnExpectedDiagnostics()
         {
-            var source = File.ReadAllText("TestCode/ValueAccessedBeforeIsOKCheck.txt");
+            var source = File.ReadAllText("TestCode/ValueAccessedBeforeIsOkCheck.txt");
             await VerifyCS.VerifyAnalyzerAsync(source);
         }
 

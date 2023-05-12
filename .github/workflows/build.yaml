@@ -1,0 +1,32 @@
+name: build
+
+on: push
+
+env:
+  DOTNET_VERSION: '6.0.401'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Install dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: |
+        cd src
+        dotnet build --configuration Release --no-restore
+        dotnet publish -c Release
+
+    - name: Test
+      run: |
+        cd src
+        dotnet test --no-restore --verbosity normal

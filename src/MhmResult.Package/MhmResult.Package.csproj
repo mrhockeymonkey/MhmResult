@@ -9,19 +9,15 @@
 
     <PropertyGroup>
         <PackageId>MhmResult</PackageId>
-<!--        <PackageVersion>1.0.0.0</PackageVersion>-->
+        <!--<PackageVersion>Managed By Nerdbank</PackageVersion>-->
         <Authors>Scott Matthews</Authors>
-<!--        <PackageLicenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</PackageLicenseUrl>-->
-<!--        <PackageProjectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</PackageProjectUrl>-->
-<!--        <PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
-<!--        <RepositoryUrl>http://REPOSITORY_URL_HERE_OR_DELETE_THIS_LINE</RepositoryUrl>-->
-<!--        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>-->
-<!--        <Description>Analyzer2</Description>-->
-<!--        <PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
-<!--        <Copyright>Copyright</Copyright>-->
-<!--        <PackageTags>Analyzer2, analyzers</PackageTags>-->
-<!--        <DevelopmentDependency>true</DevelopmentDependency>-->
-<!--        <NoPackageAnalysis>true</NoPackageAnalysis>-->
+        <PackageLicenseUrl>https://github.com/mrhockeymonkey/MhmResult/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/mrhockeymonkey/MhmResult</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/mrhockeymonkey/MhmResult</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>Experimental implementation of Result with bundled analyzers</Description>
+        <DevelopmentDependency>true</DevelopmentDependency>
+        <NoPackageAnalysis>true</NoPackageAnalysis>
 
         <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
     </PropertyGroup>

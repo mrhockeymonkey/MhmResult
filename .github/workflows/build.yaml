@@ -32,3 +32,10 @@ jobs:
       run: |
         cd src
         dotnet test --no-restore --verbosity normal
+
+    - name: Upload nuget package
+      uses: actions/upload-artifact@v3
+      with:
+        name: nupkg
+        path: |
+          src/MhmResult.Package/bin/Release/*.nupkg

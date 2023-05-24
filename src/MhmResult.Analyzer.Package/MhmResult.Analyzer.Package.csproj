@@ -2,29 +2,26 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <IncludeBuildOutput>true</IncludeBuildOutput>
-        <SuppressDependenciesWhenPacking>false</SuppressDependenciesWhenPacking>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>MhmResult</PackageId>
+        <PackageId>MhmResult.Analyzers</PackageId>
+        <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
         <!--<PackageVersion>Managed By Nerdbank</PackageVersion>-->
         <Authors>Scott Matthews</Authors>
         <PackageLicenseUrl>https://github.com/mrhockeymonkey/MhmResult/blob/main/LICENSE</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/mrhockeymonkey/MhmResult</PackageProjectUrl>
         <RepositoryUrl>https://github.com/mrhockeymonkey/MhmResult</RepositoryUrl>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <Description>Experimental implementation of Result with bundled analyzers</Description>
+        <Description>Description</Description>
         <DevelopmentDependency>true</DevelopmentDependency>
         <NoPackageAnalysis>true</NoPackageAnalysis>
-
-        <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MhmResult.Analyzer\MhmResult.Analyzer.csproj" />
-      <ProjectReference Include="..\MhmResult.Core\MhmResult.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -33,6 +30,10 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
     </ItemGroup>
+    
+    <PropertyGroup>
+        <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);_AddAnalyzersToOutput</TargetsForTfmSpecificContentInPackage>
+    </PropertyGroup>
 
     <Target Name="_AddAnalyzersToOutput">
         <ItemGroup>

@@ -8,4 +8,23 @@
         <RootNamespace>MhmResult</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="Nerdbank.GitVersioning" Version="3.6.132">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>MhmResult</PackageId>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <!--<PackageVersion>Managed By Nerdbank</PackageVersion>-->
+        <Authors>Scott Matthews</Authors>
+        <PackageLicenseUrl>https://github.com/mrhockeymonkey/MhmResult/blob/main/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/mrhockeymonkey/MhmResult</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/mrhockeymonkey/MhmResult</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>Description</Description>
+    </PropertyGroup>
+
 </Project>

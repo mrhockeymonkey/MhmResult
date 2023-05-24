@@ -41,4 +41,5 @@ jobs:
       with:
         name: nupkg
         path: |
-          src/MhmResult.Package/bin/Release/*.nupkg
+          src/MhmResult.Analyzer.Package/bin/Release/*.nupkg
+          src/MhmResult.Core/bin/Release/*.nupkg

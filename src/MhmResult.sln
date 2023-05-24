@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MhmResult.Analyzer", "MhmRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MhmResult.Analyzer.Tests", "MhmResult.Analyzer.Tests\MhmResult.Analyzer.Tests.csproj", "{05B5A207-EF57-4CF0-9471-DAA380654036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MhmResult.Package", "MhmResult.Package\MhmResult.Package.csproj", "{ECB5AE52-18C2-40CC-AF07-13B38A9A900F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MhmResult.Analyzer.Package", "MhmResult.Analyzer.Package\MhmResult.Analyzer.Package.csproj", "{ECB5AE52-18C2-40CC-AF07-13B38A9A900F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MhmResult.Core", "MhmResult.Core\MhmResult.Core.csproj", "{E2D54564-1BDA-4652-9D3D-01B5B489566D}"
 EndProject

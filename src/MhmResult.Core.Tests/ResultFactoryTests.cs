@@ -1,8 +1,8 @@
 ﻿namespace MhmResult.Core.Tests;
 
-public class ResultFactoryTests
+public class ResultFactoryTests // TODO remove duplicate tests
 {
-    # region Constructors // TODO move to resultfactorytests
+    # region Factories
     
     [Fact]
     public void Given_ValueIsValueType_When_CreatingResult_ReturnResult()
@@ -57,8 +57,8 @@ public class ResultFactoryTests
     [Fact]
     public void Given_ErrorIsOfValueType_When_CreatingResult_ReturnResult()
     {
-        var error =7;
-        var result = Result.Error<int, int>(7); //new Result<string, int>(error);
+        var error = 7;
+        var result = Result.Error<int, int>(7);
         
         result.ShouldBeErrorResult();
         Assert.Equal(error, result.Error);
@@ -80,71 +80,71 @@ public class ResultFactoryTests
     
     # endregion
     
-    // # region Ok
-    //
-    // [Fact]
-    // public void Given_ValueType_When_OkCalled_Then_ReturnOkResult()
-    // {
-    //     var value = Guid.NewGuid();
-    //     var result = Result.Ok(value);
-    //     
-    //     result.ShouldBeOkResult();
-    //     Assert.Equal(value, result.Value);
-    // }
-    //
-    // [Fact]
-    // public void Given_ValueType_When_OkWithErrorTypeCalled_Then_ReturnOkResult()
-    // {
-    //     var value = Guid.NewGuid();
-    //     var result = Result.Ok<Guid, string>(value);
-    //     
-    //     result.ShouldBeOkResult();
-    //     Assert.Equal(value, result.Value);
-    // }
-    //
-    // [Fact]
-    // public void Given_ReferenceType_When_OkCalled_Then_ReturnOkResult()
-    // {
-    //     var value = new List<int>{1, 2, 3};
-    //     var result = Result.Ok(value);
-    //     
-    //     result.ShouldBeOkResult();
-    //     Assert.Same(value, result.Value);
-    // }    
-    //
-    // [Fact]
-    // public void Given_ReferenceType_When_OkWithErrorTypeCalled_Then_ReturnOkResult()
-    // {
-    //     var value = new List<int>{1, 2, 3};
-    //     var result = Result.Ok<List<int>, List<string>>(value);
-    //     
-    //     result.ShouldBeOkResult();
-    //     Assert.Same(value, result.Value);
-    // }
-    //
-    // # endregion
-    //
-    // #region Fail
-    //
-    // [Fact]
-    // public void Given_Exception_When_FailCalled_ReturnFailResult()
-    // {
-    //     var ex = new Exception();
-    //     var result = Result.Error<int>(ex);
-    //     
-    //     result.ShouldBeFailResult();
-    //     Assert.Same(ex, result.Error);
-    // }
-    //
-    // [Fact]
-    // public void Given_CustomErrorType_When_FailCalled_ReturnFailResult()
-    // {
-    //     var errorMessage = "something went wrong";
-    //     var result = Result.Error<int, string>(errorMessage);
-    //     
-    //     result.ShouldBeFailResult();
-    //     Assert.Same(errorMessage, result.Error);
-    // }
-    //
-    // #endregion
+    # region Ok
+    
+    [Fact]
+    public void Given_ValueType_When_OkCalled_Then_ReturnOkResult()
+    {
+        var value = Guid.NewGuid();
+        var result = Result.Ok(value);
+        
+        result.ShouldBeOkResult();
+        Assert.Equal(value, result.Value);
+    }
+    
+    [Fact]
+    public void Given_ValueType_When_OkWithErrorTypeCalled_Then_ReturnOkResult()
+    {
+        var value = Guid.NewGuid();
+        var result = Result.Ok<Guid, string>(value);
+        
+        result.ShouldBeOkResult();
+        Assert.Equal(value, result.Value);
+    }
+    
+    [Fact]
+    public void Given_ReferenceType_When_OkCalled_Then_ReturnOkResult()
+    {
+        var value = new List<int>{1, 2, 3};
+        var result = Result.Ok(value);
+        
+        result.ShouldBeOkResult();
+        Assert.Same(value, result.Value);
+    }    
+    
+    [Fact]
+    public void Given_ReferenceType_When_OkWithErrorTypeCalled_Then_ReturnOkResult()
+    {
+        var value = new List<int>{1, 2, 3};
+        var result = Result.Ok<List<int>, List<string>>(value);
+        
+        result.ShouldBeOkResult();
+        Assert.Same(value, result.Value);
+    }
+    
+    # endregion
+    
+    #region Fail
+    
+    [Fact]
+    public void Given_Exception_When_FailCalled_ReturnFailResult()
+    {
+        var err = new ErrorMessage("something went wrong");
+        var result = Result.Error<int>(err);
+        
+        result.ShouldBeErrorResult();
+        Assert.Equal(err, result.Error);
+    }
+    
+    [Fact]
+    public void Given_CustomErrorType_When_FailCalled_ReturnFailResult()
+    {
+        var err = new Exception("something went wrong");
+        var result = Result.Error<int, Exception>(err);
+        
+        result.ShouldBeErrorResult();
+        Assert.Same(err, result.Error);
+    }
+    
+    #endregion
 }

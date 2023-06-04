@@ -8,7 +8,7 @@ public static class IncorrectUsage
 {
     public static Task RunAsync()
     {
-        var result1 = "hello".ToOkResult();
+        var result1 = Result.Ok("hello");
         Console.WriteLine(result1.Value); // should produce a compiler warning
 
         var result2 = Result.Ok(1234);

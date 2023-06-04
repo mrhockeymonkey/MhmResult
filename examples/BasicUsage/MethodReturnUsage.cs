@@ -10,7 +10,7 @@ public static class MethodReturnUsage
     public static async Task RunAsync()
     {
         var result = GetStringFromBadApi();
-        if (result.IsFail)
+        if (result.IsError)
         {
             Console.WriteLine($"Sadly the error was {result.Error.GetType()}");
         }
@@ -23,7 +23,7 @@ public static class MethodReturnUsage
         });
     }
 
-    static Result<string, Exception> GetStringFromBadApi()
+    static Result<string, ErrorMessage> GetStringFromBadApi()
     {
         try
         {
@@ -32,11 +32,11 @@ public static class MethodReturnUsage
         }
         catch (Exception ex)
         {
-            return Result.Fail<string>(ex);
+            return Result.Error<string>(ex.Message);
         }
     }
     
-    static async Task<Result<string, Exception>> GetStringFromBadApiAsync()
+    static async Task<Result<string, ErrorMessage>> GetStringFromBadApiAsync()
     {
         try
         {
@@ -46,7 +46,7 @@ public static class MethodReturnUsage
         }
         catch (Exception ex)
         {
-            return Result.Fail<string>(ex);
+            return Result.Error<string>(ex.Message);
         }
     }
 

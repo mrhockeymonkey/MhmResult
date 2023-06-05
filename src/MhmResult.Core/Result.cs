@@ -33,13 +33,27 @@ public readonly struct Result<TValue, TError>
     public TValue ValueOrDefault(TValue otherwise) => IsOk ? _value! : otherwise;
     public TValue ValueOrDefault(Func<TValue> otherwise) => IsOk ? _value! : otherwise();
     public TValue? ValueOrDefault() => _value;
-    
-    public T Match<T>(Func<TValue, T> ok, Func<TError, T> error) =>
-        IsOk switch
+
+    public T Match<T>(Func<TValue, T> ok, Func<TError, T> error)
+    {
+        if (ok == null) throw new ArgumentNullException(nameof(ok));
+        if (error == null) throw new ArgumentNullException(nameof(error));
+        return IsOk
+            ? ok(Value)
+            : error(Error);
+    }
+
+    public void Match(Action<TValue> ok, Action<TError> error)
+    {
+        if (ok == null) throw new ArgumentNullException(nameof(ok));
+        if (error == null) throw new ArgumentNullException(nameof(error));
+        if (IsOk)
         {
-            true when ok is null => throw new ArgumentNullException(nameof(ok)),
-            true => ok(Value),
-            false when error is null => throw new ArgumentNullException(nameof(error)),
-            false => error(Error)
-        };
+            ok(Value);
+        }
+        else
+        {
+            error(Error);
+        }
+    }
 }

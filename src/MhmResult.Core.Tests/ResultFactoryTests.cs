@@ -15,6 +15,16 @@ public class ResultFactoryTests // TODO remove duplicate tests
     }
     
     [Fact]
+    public void Given_ValueIsValueType_When_CreatingResultWithDefaultErrorType_ReturnResult()
+    {
+        var value = 1;
+        var result = Result.Ok(value);
+        
+        result.ShouldBeOkResult();
+        Assert.Equal(value, result.Value);
+    }
+    
+    [Fact]
     public void Given_ValueIsReferenceType_When_CreatingResult_ReturnResult()
     {
         var value = new List<string>{"string", "string", "string"};
@@ -52,6 +62,16 @@ public class ResultFactoryTests // TODO remove duplicate tests
         
         result.ShouldBeErrorResult();
         Assert.Same(error, result.Error);
+    }
+    
+    [Fact]
+    public void Given_ErrorIsOfReferenceType_When_CreatingResultWithDefaultErrorType_ReturnResult()
+    {
+        var error = new ErrorMessage();
+        var result = Result.Error<string>(error);
+        
+        result.ShouldBeErrorResult();
+        Assert.Equal(error, result.Error);
     }
     
     [Fact]

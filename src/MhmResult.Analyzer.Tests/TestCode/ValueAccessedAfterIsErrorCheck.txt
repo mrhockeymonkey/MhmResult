@@ -6,9 +6,9 @@ public class Program
     private static void Main(string[] args)
     {
         var result = Result.Ok(7);
-        var other = [|result.Value|];
-        if (result.IsFail){
-            return;
+        
+        if (result.IsError){
+            var other = result.Value;
         }
     }
 }

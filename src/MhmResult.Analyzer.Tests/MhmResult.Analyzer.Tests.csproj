@@ -31,10 +31,10 @@
     <None Update="TestCode\ValueAccessedAfterIsOkCheck.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCode\ValueAccessedAfterIsFailCheck.txt">
+    <None Update="TestCode\ValueAccessedAfterIsErrorCheck.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCode\ValueAccessedBeforeIsFailCheck.txt">
+    <None Update="TestCode\ValueAccessedBeforeIsErrorCheck.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="TestCode\ValueAccessedBeforeIsOkCheck.txt">

@@ -1,22 +1,15 @@
-﻿namespace MhmResult;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Net.Http.Headers;
+
+namespace MhmResult;
 
 public static class ResultExtensions
 {
-    // TODO is this useful?
+    // TODO is this useful? should a null parameter throw or return Error?
     // public static Result<TValue, TError> ToResult<TValue, TError>(this TValue value)
     //     where TValue : notnull
     //     where TError : notnull
     //     => new(value);
-    
-    public static Result<TValue, Exception> ToOkResult<TValue>(this TValue value) where TValue : notnull 
-        => new(value);
-    public static Result<TValue, Exception> ToFailResult<TValue>(this Exception ex) where TValue : notnull 
-        => new(Error.From(ex));    
-    
-    public static Result<TValue, TError> ToOkResult<TValue, TError>(this TValue value) where TValue : notnull where TError : notnull
-        => new(value);
-    public static Result<TValue, TError> ToFailResult<TValue, TError>(this TError ex) where TValue : notnull where TError : notnull
-        => new(Error.From(ex));
 
     public static Result<TResult, TError> Map<TValue, TError, TResult>(this Result<TValue, TError> result, Func<TValue, TResult> func) 
         where TValue : notnull 
@@ -25,7 +18,7 @@ public static class ResultExtensions
         result switch
         {
             { IsOk: true } => new Result<TResult, TError>(func(result.Value)),
-            { IsOk: false } => new Result<TResult, TError>(Error.From(result.Error)), // TODO performance?
+            { IsOk: false } => new Result<TResult, TError>(result.Error), // TODO performance?
         };
     
     public static Result<TResult, TError> Map<TValue, TError, TResult>(this Result<TValue, TError> result, Func<TValue, TResult?> func, TResult otherwise) 
@@ -36,7 +29,7 @@ public static class ResultExtensions
     {
         if (!result.IsOk)
         {
-            return new Result<TResult, TError>(Error.From(result.Error)); // TODO performance?
+            return new Result<TResult, TError>(result.Error); // TODO performance?
         }
     
         var newValue = func(result.Value);
@@ -54,6 +47,16 @@ public static class ResultExtensions
         result switch
         {
             { IsOk: true } => func(result.Value),
-            { IsOk: false } => new Result<TResult, TError>(Error.From(result.Error)), // TODO perf?
+            { IsOk: false } => new Result<TResult, TError>(result.Error), // TODO perf?
         };
+
+    public static Result<IEnumerable<TResult>, TError> Traverse<TValue, TResult, TError>(
+        this IEnumerable<TValue> enumerable, 
+        Func<TValue, Result<TResult, TError>> func)
+        where TValue : notnull
+        where TError : notnull
+        where TResult : notnull
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -25,7 +25,7 @@ namespace MhmResult.Analyzer.Tests
         [TestMethod]
         public async Task Given_ValueAccessedAfterIsFailCheck_Then_ReturnExpectedDiagnostics()
         {
-            var source = File.ReadAllText("TestCode/ValueAccessedAfterIsFailCheck.txt");
+            var source = File.ReadAllText("TestCode/ValueAccessedAfterIsErrorCheck.txt");
             await VerifyCS.VerifyAnalyzerAsync(source);
         }
         
@@ -39,7 +39,7 @@ namespace MhmResult.Analyzer.Tests
         [TestMethod]
         public async Task Given_ValueAccessedBeforeIsFailCheck_Then_ReturnExpectedDiagnostics()
         {
-            var source = File.ReadAllText("TestCode/ValueAccessedBeforeIsFailCheck.txt");
+            var source = File.ReadAllText("TestCode/ValueAccessedBeforeIsErrorCheck.txt");
             await VerifyCS.VerifyAnalyzerAsync(source);
         }
         

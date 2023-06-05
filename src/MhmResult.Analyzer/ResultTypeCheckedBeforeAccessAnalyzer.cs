@@ -49,7 +49,7 @@ namespace MhmResult.Analyzer
                 
                 var variableName = expression.Identifier.Text;
                 
-                if (memberAccessExpression.Name.ToString() == "IsOk" || memberAccessExpression.Name.ToString() == "IsFail")
+                if (memberAccessExpression.Name.ToString() == "IsOk" || memberAccessExpression.Name.ToString() == "IsError")
                     checkedResults.Add(variableName);
                     
                 if (memberAccessExpression.Name.ToString() == "Value" && !checkedResults.Contains(variableName))
@@ -63,7 +63,7 @@ namespace MhmResult.Analyzer
         private static readonly DiagnosticDescriptor Rule = new (
             nameof(ResultTypeCheckedBeforeAccessAnalyzer),
             "Result should be checked before use",
-            "Check Result using IsOk or IsFail before accessing value",
+            "Check Result using IsOk or IsError before accessing value",
             "Usage",
             DiagnosticSeverity.Warning,
             isEnabledByDefault: true);
